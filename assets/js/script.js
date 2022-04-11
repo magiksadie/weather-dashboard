@@ -20,15 +20,21 @@ function fetchSearch(city) {
         console.log(error)
     })
 }
-function fetchWeather(lat, lon) {
+async function fetchWeather(lat, lon) {
     var weatherAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly,alerts&appid=f67e4c0b75e73789ccfab3486194bd2f`;
-    return fetch(weatherAPI).then(response => response.json()).then((data) => {
+    try {
+        const response = await fetch(weatherAPI);
+        const data = await response.json();
+        var weather = data.current.weather;
+        var humidity = data.current.humidity;
+        console.log(weather, humidity);
         return data;
-    }).catch(function(error) {
-        console.log(error)
-    });
+    } catch (error) {
+        console.log(error);
+    }
 }
 function renderForecast(forecastWeather) {
     var forecastEl = document.getElementById('forecast');
+    forecastEl.innerHTML = forecastWeather;
     console.log(forecastWeather);
 };
