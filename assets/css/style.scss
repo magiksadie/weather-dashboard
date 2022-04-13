@@ -1,0 +1,63 @@
+$backgroundColor: #2B2F35;
+$secondaryColor: #133249;
+$accentColor: #535E4B;
+$textColor: #A89991;
+
+body {
+    background-color: $backgroundColor;
+    color: $textColor;
+}
+
+header {
+    background-color: $secondaryColor;
+    padding: .8rem;
+    border-radius: .7em;
+    box-shadow: 0 0 .5rem rgba(0,0,0,.2);
+    h1 {
+        text-align: center;
+    }
+}
+
+#search-city {
+    margin: 1rem 0;
+    border: $accentColor solid .05rem;
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input {
+            border: none;
+            padding: .7rem;
+            font-size: 1.2rem;
+            background-color: $secondaryColor;
+            color: $textColor;
+            border-radius: .7em;
+            box-shadow: 0 0 .5rem rgba(0,0,0,.2);
+            &:focus {
+                outline: none;
+            }
+        }
+        button {
+            border: none;
+            padding: .5rem;
+            font-size: 1.2rem;
+            background-color: $accentColor;
+            color: $textColor;
+            border-radius: .7em;
+            box-shadow: 0 0 .5rem rgba(0,0,0,.2);
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+#day-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    background: $secondaryColor;
+    border-radius: .7em;
+    box-shadow: 0 0 .5rem rgba(0,0,0,.2);
+    border: $accentColor solid .05rem;
+}

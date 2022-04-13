@@ -1,1 +1,78 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+body {
+  background-color: #2B2F35;
+  color: #A89991;
+}
+
+header {
+  background-color: #133249;
+  padding: .8rem;
+  border-radius: .7em;
+  -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  text-align: center;
+}
+
+#search-city {
+  margin: 1rem 0;
+  border: #535E4B solid 0.05rem;
+}
+
+#search-city form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#search-city form input {
+  border: none;
+  padding: .7rem;
+  font-size: 1.2rem;
+  background-color: #133249;
+  color: #A89991;
+  border-radius: .7em;
+  -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+#search-city form input:focus {
+  outline: none;
+}
+
+#search-city form button {
+  border: none;
+  padding: .5rem;
+  font-size: 1.2rem;
+  background-color: #535E4B;
+  color: #A89991;
+  border-radius: .7em;
+  -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+#search-city form button:focus {
+  outline: none;
+}
+
+#day-forecast {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 1rem 0;
+  background: #133249;
+  border-radius: .7em;
+  -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  border: #535E4B solid 0.05rem;
+}
+/*# sourceMappingURL=style.css.map */
