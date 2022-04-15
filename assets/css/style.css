@@ -16,20 +16,22 @@ header h1 {
 }
 
 #search-city {
-  margin: 1rem 0;
-  border: #535E4B solid 0.05rem;
-}
-
-#search-city form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 1rem 0;
+}
+
+#search-city form {
+  border: #535E4B solid 0.05rem;
+  padding: 2.5rem;
+  border-radius: .7em;
 }
 
 #search-city form input {
@@ -62,13 +64,39 @@ header h1 {
   outline: none;
 }
 
-#day-forecast {
+.current-forecast {
+  padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 1rem 0;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.current-forecast #current {
+  background: #535E4B;
+}
+
+#forecast {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem 1rem;
+}
+
+#day-forecast {
+  margin: 1rem 1rem;
+  padding: 1rem;
   background: #133249;
   border-radius: .7em;
   -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);

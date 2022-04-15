@@ -1,11 +1,32 @@
 var searchBtnEl = document.getElementById('searchBtn');
+var searchArray = [];
+var searchHistoryEl = document.getElementById('search-history');
+if (localStorage.getItem("searchHistory")) {
+    searchArray = JSON.parse(localStorage.getItem("searchHistory"));
+    for (var i = 0; i <searchArray.length; i++) {
+        var searchHistoryBtn = document.createElement('button');
+        searchHistoryBtn.innerHTML = searchArray[i];
+        searchHistoryEl.appendChild(searchHistoryBtn);
+        searchHistoryBtn.addEventListener('click', fetchSearch(searchArray[i]));
+    }
+}
 
 searchBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
     var searchInputEl = document.getElementById('searchInput');
     var userInput = searchInputEl.value;
     fetchSearch(userInput);
+    searchArray.push(userInput);
+    var searchHistoryEl = document.getElementById('search-history');
+    var searchHistoryBtn = document.createElement('button');
+    searchHistoryBtn.innerHTML = userInput;
+    searchHistoryEl.appendChild(searchHistoryBtn);
+    saveSearch(searchArray);
 });
+function saveSearch(history) {
+    localStorage.setItem("searchHistory", JSON.stringify(history));
+}
+
 function fetchSearch(city) {
     var cityAPI =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f67e4c0b75e73789ccfab3486194bd2f`;
     fetch(cityAPI).then(function(response) {
@@ -16,14 +37,15 @@ function fetchSearch(city) {
         return fetchWeather(lat, lon);
     }).then(function(forecastWeather) {
         renderForecast(forecastWeather);
+        console.log(forecastWeather);
         $('#forecast').empty();
         for (var i = 1; i < 6; i++) {
             var forecastDay = forecastWeather.daily[i];
             renderForecastDay(forecastDay);
         }
     }).catch(function(error) {
-        console.log(error)
-    })
+        console.log(error);
+    });
 }
 async function fetchWeather(lat, lon) {
     var weatherAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly,alerts&appid=f67e4c0b75e73789ccfab3486194bd2f`;

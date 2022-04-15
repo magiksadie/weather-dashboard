@@ -19,12 +19,14 @@ header {
 }
 
 #search-city {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin: 1rem 0;
-    border: $accentColor solid .05rem;
     form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        border: $accentColor solid .05rem;
+        padding: 2.5rem;
+        border-radius: .7em;
         input {
             border: none;
             padding: .7rem;
@@ -52,10 +54,26 @@ header {
     }
 }
 
-#day-forecast {
+.current-forecast {
+    padding: 1rem;
     display: flex;
-    flex-wrap: wrap;
-    margin: 1rem 0;
+    align-self: flex-end;
+    #current {
+        background: $accentColor;
+    }
+}
+
+#forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem 1rem;
+}
+
+#day-forecast {
+    margin: 1rem 1rem;
+    padding: 1rem;
     background: $secondaryColor;
     border-radius: .7em;
     box-shadow: 0 0 .5rem rgba(0,0,0,.2);
