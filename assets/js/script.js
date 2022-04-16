@@ -4,10 +4,7 @@ var searchHistoryEl = document.getElementById('search-history');
 if (localStorage.getItem("searchHistory")) {
     searchArray = JSON.parse(localStorage.getItem("searchHistory"));
     for (var i = 0; i <searchArray.length; i++) {
-        var searchHistoryBtn = document.createElement('button');
-        searchHistoryBtn.innerHTML = searchArray[i];
-        searchHistoryEl.appendChild(searchHistoryBtn);
-        searchHistoryBtn.addEventListener('click', fetchSearch(searchArray[i]));
+        renderSearchHistoryButton(searchArray[i]);
     }
 }
 
@@ -37,7 +34,6 @@ function fetchSearch(city) {
         return fetchWeather(lat, lon);
     }).then(function(forecastWeather) {
         renderForecast(forecastWeather);
-        console.log(forecastWeather);
         $('#forecast').empty();
         for (var i = 1; i < 6; i++) {
             var forecastDay = forecastWeather.daily[i];
@@ -60,11 +56,20 @@ async function fetchWeather(lat, lon) {
 function renderForecast(forecastWeather) {
     var forecastEl = document.getElementById('current');
     forecastEl.innerHTML = 'Current Weather ' + '</br>' + 'Forecast: ' + forecastWeather.current.weather[0].description + `<img src="http://openweathermap.org/img/wn/${forecastWeather.current.weather[0].icon}@2x.png"/>` + '</br>' + 'Feels Like: ' + forecastWeather.current.feels_like + '&#8457;' + '</br>' + 'Temperature: ' + forecastWeather.current.temp + '&#8457;' + '</br>' + 'Humidity: ' + forecastWeather.current.humidity + '%' + '</br>' + 'Wind Speed: ' + forecastWeather.current.wind_speed + 'mph' + '</br>' + 'UV Index: ' + forecastWeather.current.uvi + '</br>';
-    console.log(forecastWeather);
 };
 function renderForecastDay(forecastDay) {
     var forecastEl = document.getElementById('forecast');
     var daily = moment(new Date(forecastDay.dt * 1000)).format('ll');
     let dayHTML = daily + '</br>' + 'Forecast: ' + forecastDay.weather[0].description + `<img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"/>` + '</br>' + 'Feels Like: ' + forecastDay.feels_like.day + '&#8457;' + '</br>' + 'Temperature: ' + forecastDay.temp.day + '&#8457;' + '</br>' + ' High Temp: ' + forecastDay.temp.max + '&#8457;' + '</br>' + 'Low Temp: ' + forecastDay.temp.min + '&#8457;' + '</br>' +  'Humidity: ' + forecastDay.humidity + '%' + '</br>' + 'Wind Speed: ' + forecastDay.wind_speed + 'mph' + '</br>' + 'UV Index: ' + forecastDay.uvi + '</br>';
     forecastEl.appendChild(document.createElement('div')).innerHTML = '<div id="day-forecast">' + dayHTML + '</div>';
+}
+
+function renderSearchHistoryButton(location) {
+    var searchHistoryBtn = document.createElement("button");
+    searchHistoryBtn.innerHTML = location;
+    searchHistoryEl.appendChild(searchHistoryBtn);
+    searchHistoryBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    fetchSearch(location);
+    });
 }
